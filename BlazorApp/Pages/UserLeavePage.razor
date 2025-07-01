@@ -1,0 +1,931 @@
+﻿@* @page "/user-leaves"
+@using BlazorApp.Interface
+@using Shared.Entities;
+@inject ILeaveRequestService LeaveRequestService
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+
+<h3>My Leave Dashboard</h3>
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="card p-3 mb-4">
+        <h5>Leave Balance</h5>
+        <p><strong>Allowed Leaves:</strong> @UserInfo.AllowedLeavesPerYear</p>
+        <p><strong>Leaves Taken:</strong> @UserInfo.LeavesTakenThisYear</p>
+    </div>
+
+    <div class="card p-3 mb-4">
+        <h5>Request New Leave</h5>
+        <EditForm Model="NewLeave" OnValidSubmit="SubmitLeaveRequest">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-2">
+                <label>Leave Type:</label>
+                <InputSelect @bind-Value="NewLeave.LeaveTypeId" class="form-control">
+                    <option value="">-- Select Leave Type --</option>
+                    <option value="Sick"> Sick</option>
+                    <option value="Causal">Casual</option>
+                    <option value="Emergency">Emergency</option>
+                </InputSelect>
+            </div>
+
+
+
+            <div class="mb-2">
+                <label>Start Date:</label>
+                <InputDate @bind-Value="NewLeave.StartDate" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>End Date:</label>
+                <InputDate @bind-Value="NewLeave.EndDate" class="form-control" />
+            </div>
+
+            <div class="mb-2">
+                <label>Reason:</label>
+                <InputText @bind-Value="NewLeave.Reason" class="form-control" />
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit Request</button>
+        </EditForm>
+    </div>
+
+    <div class="card p-3">
+        <h5>My Leave Requests</h5>
+        @if (LeaveRequests.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Status</th>
+                        <th>Reason</th>
+                        <th>Admin Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var leave in LeaveRequests)
+                    {
+                        <tr>
+                            <td>@leave.StartDate.ToShortDateString()</td>
+                            <td>@leave.EndDate.ToShortDateString()</td>
+                            <td>@leave.Status</td>
+                            <td>@leave.Reason</td>
+                            <td>@leave.AdminRemarks</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No leave requests yet.</p>
+        }
+    </div>
+}
+
+@code {
+    private List<LeaveRequest> LeaveRequests = new();
+    private LeaveRequest NewLeave = new();
+    private User UserInfo = new();
+    private bool IsLoading = true;
+    private List<LeaveType> LeaveTypes = new();
+
+    private int UserId = 1; // Replace with actual logged-in user ID after authentication
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+
+        UserInfo = await UserService.GetUserByIdAsync(UserId);
+        LeaveRequests = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+        LeaveTypes = await LeaveRequestService.GetLeaveTypesAsync(); // Add this service method
+
+        NewLeave = new LeaveRequest
+            {
+                UserId = UserId,
+                Username = UserInfo.Username ?? "",
+                StartDate = DateTime.Now,       
+                EndDate = DateTime.Now.AddDays(1)
+            };
+
+        IsLoading = false;
+    }
+
+    private async Task SubmitLeaveRequest()
+    {
+        // Validate leave duration
+
+        int requestedDays = (NewLeave.EndDate - NewLeave.StartDate).Days + 1;
+        int availableLeaves = UserInfo.AllowedLeavesPerYear - UserInfo.LeavesTakenThisYear;
+
+        if (requestedDays <= 0)
+        {
+            await JS.InvokeVoidAsync("alert", "End date must be after start date.");
+            return;
+        }
+
+        if (requestedDays > availableLeaves)
+        {
+            await JS.InvokeVoidAsync("alert", $"You only have {availableLeaves} leaves left.");
+            return;
+        }
+        var newLeaveDto = new LeaveRequestDto
+            {
+                UserId = NewLeave.UserId,
+                LeaveTypeId = NewLeave.LeaveTypeId,
+                StartDate = NewLeave.StartDate,
+                EndDate = NewLeave.EndDate,
+                Reason = NewLeave.Reason,
+                Status = NewLeave.Status
+            };
+
+        await LeaveRequestService.CreateLeaveRequestAsync(newLeaveDto);
+        NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+        // await LeaveRequestService.CreateLeaveRequestAsync(NewLeave);
+        // NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+    }
+}
+ *@
+
+@* 
+@page "/user-leaves/{UserId:int}"
+
+@using BlazorApp.Interface
+@using Shared.Entities;
+@inject ILeaveRequestService LeaveRequestService
+@inject IUserService UserService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+<h3 class=" text-center">Hello @UserInfo.Username</h3>
+<h3>Your Leaves</h3>
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="card p-3 mb-4">
+        <h5>Your Leaves</h5>
+        <p><strong>Allowed Leaves per Year:</strong> @UserInfo.AllowedLeavesPerYear</p>
+        <p><strong>Leaves Taken This Year:</strong> @UserInfo.LeavesTakenThisYear</p>
+        <p><strong>Approved Leaves:</strong> @ApprovedCount</p>
+        <p><strong>Pending Leaves:</strong> @PendingCount</p>
+    </div>
+
+    <button class="btn btn-primary" @onclick="NavigateToCreate">
+        Apply for a new leave
+    </button>
+}
+
+@code {
+    // private bool IsLoading = true;
+    // private User UserInfo = new User();
+    // private List<LeaveRequest> UserLeaves = new List<LeaveRequest>();
+    // [Parameter]
+    // public int UserId { get; set;}
+
+    // private int ApprovedCount = 0;
+    // private int PendingCount = 0;
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     IsLoading = true;
+
+    //     // Retrieve UserId from LocalStorage
+    //     var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+    //     if (string.IsNullOrEmpty(userIdString) ||
+    //         !int.TryParse(userIdString, out UserId))
+    //     {
+    //         // Redirect to login if not authenticated
+    //         NavigationManager.NavigateTo("/login");
+
+    //         return;
+    //     }
+
+    //     UserInfo = await UserService.GetUserByIdAsync(UserId);
+    //     UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+
+    //     ApprovedCount = UserLeaves.Count(l => l.Status == "Approved");
+
+    //     PendingCount = UserLeaves.Count(l => l.Status == "Pending");
+
+    //     IsLoading = false;
+    // }
+
+    // private void NavigateToCreate()
+    // {
+    //     NavigationManager.NavigateTo("/leave-request-form");
+
+    // }
+    [Parameter]
+    public int UserId { get; set; }
+
+    private bool IsLoading { get; set; } = true;
+    private User UserInfo { get; set; } = new User();
+    private List<LeaveRequest> UserLeaves { get; set; } = new List<LeaveRequest>();
+
+    private int ApprovedCount { get; set; }
+    private int PendingCount { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+
+        // Retrieve UserId from LocalStorage
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) ||
+            !int.TryParse(userIdString, out var parsedUserId))
+        {
+            // Redirect to login if not authenticated
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
+        UserId = parsedUserId;
+
+        UserInfo = await UserService.GetUserByIdAsync(UserId);
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+
+        ApprovedCount = UserLeaves.Count(l => l.Status == "Approved");
+
+        PendingCount = UserLeaves.Count(l => l.Status == "Pending");
+
+        IsLoading = false;
+    }
+    private void NavigateToCreate()
+    {
+        NavigationManager.NavigateTo("/create-leave");
+
+        // Or if you want to include UserId, for instance:
+        // NavigationManager.NavigateTo($"/create-leave/{UserId}");
+
+    }
+
+}
+ *@
+
+
+@* 
+@page "/user-leaves/{UserId:int}"
+
+@using BlazorApp.Interface
+@using Shared.Entities;
+
+@inject ILeaveRequestService LeaveRequestService
+@inject IUserService UserService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<h3 class="text-center ">Hello @UserInfo.Username</h3>
+<p class="text-center">Welcome! Here you can view your leave requests.</p>
+
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{     
+      <div class="card p-3 mb-4 light-blue-background">
+        <div class="card p-3 mb-4">
+          <h5>Your Leaves</h5>
+          <p><strong>Allowed Leaves per Year:</strong> @UserInfo.AllowedLeavesPerYear</p>
+          <p><strong>Leaves Taken This Year:</strong> @UserInfo.LeavesTakenThisYear</p>
+          <p><strong>Approved Leaves:</strong> @ApprovedCount</p>
+          <p><strong>Pending Leaves:</strong> @PendingCount</p>
+          </div>
+      
+      <table class="table table-bordered mt-4">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Start Date</th>
+                <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var leave in UserLeaves)
+                {
+                    <tr>
+                        <td>@leave.LeaveId</td>
+                        <td>@leave.StartDate</td>
+                        <td>@leave.EndDate</td>
+                        <td>@leave.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="quick-actions">
+            <h4>Quick Actions</h4>
+            <button class="btn btn-primary mr-2" @onclick="NavigateToCreate">Apply for a leave</button>
+            <button class="btn btn-info mr-2" @onclick="LoadApprovedLeaves">See Approved Leaves</button>
+            <button class="btn btn-warning mr-2" @onclick="LoadPendingLeaves">See Pending Leaves</button>
+            <button class ="btn btn-success" @onclick="LoadAllLeaves">See All Leaves</button>
+        </div>
+        </div>
+
+}
+<style>
+    .light-blue-background{
+        background-color: #D0E8FB;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .quick-actions {
+        margin-top: 30px;
+        padding: 20px;
+        background: #B2EBF2;
+        border-radius: 12px;
+    }
+
+        .quick-actions h4 {
+            margin-bottom: 16px;
+        }
+
+
+</style>
+@code {
+
+    [Parameter]
+    public int UserId { get; set; }
+
+    private bool IsLoading { get; set; } = true;
+    private User UserInfo { get; set; } = new User();
+    private List<LeaveRequest> UserLeaves { get; set; } = new List<LeaveRequest>();
+
+    private int ApprovedCount { get; set; }
+    private int PendingCount { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) ||
+            !int.TryParse(userIdString, out var parsedUserId))
+        {
+            // Redirect to login if not authenticated
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
+        UserId = parsedUserId;
+
+        UserInfo = await UserService.GetUserByIdAsync(UserId);
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+
+        ApprovedCount = UserLeaves.Count(l => l.Status == "Approved");
+
+        PendingCount = UserLeaves.Count(l => l.Status == "Pending");
+
+        IsLoading = false;
+    }
+
+    private void NavigateToCreate()
+    {
+        NavigationManager.NavigateTo("/create-leave");
+
+    }
+
+    private async Task LoadAllLeaves()
+    {
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+
+        StateHasChanged();
+    }
+
+    private async Task LoadPendingLeaves()
+    {
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId))
+            .Where(l => l.Status == "Pending").ToList();
+
+        StateHasChanged();
+    }
+
+    private async Task LoadApprovedLeaves()
+    {
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId))
+            .Where(l => l.Status == "Approved").ToList();
+
+        StateHasChanged();
+    }
+
+} *@
+
+
+@page "/user-leaves/{UserId:int}"
+
+@using BlazorApp.Interface
+@using Shared.Entities;
+
+@inject ILeaveRequestService LeaveRequestService
+@inject IUserService UserService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+@using System.Net.Http.Headers
+@inject HttpClient Http
+@inject ILocalStorageService LocalStorage
+<nav class=" navbar navbar-expand-lg navbar-light bg-light">
+    <ul class=" navbar-nav">
+        <li class=" nav-item">
+            <NavLink class=" nav-link" href =" /login">Login</NavLink>
+        </li>
+    </ul>@* 
+    <a href="/login">Login</a> *@
+</nav>
+<h3 class="page-title">Hello, @UserInfo.Username</h3>
+<p class="sub-heading">Welcome! Here you can view and manage your leave requests.</p>
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="container-box">
+        <div class="summary-card">
+            <h4>Your Leave Summary</h4>
+            <p><strong>Allowed Leaves:</strong> @UserInfo.AllowedLeavesPerYear</p>
+            <p><strong>Leaves Taken:</strong> @UserInfo.LeavesTakenThisYear</p>
+            <p><strong>Approved:</strong> @ApprovedCount</p>
+            <p><strong>Pending:</strong> @PendingCount</p>
+        </div>
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Leave ID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var leave in UserLeaves)
+                {
+                    <tr>
+                        <td>@leave.LeaveId</td>
+                        <td>@leave.StartDate.ToString("yyyy-MM-dd")</td>
+                        <td>@leave.EndDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            @if (leave.Status == "Pending")
+                            {
+                                <span class="badge warning">Pending</span>
+                            }
+                            else if (leave.Status == "Approved")
+                            {
+                                <span class="badge success">Approved</span>
+                            }
+                            else
+                            {
+                                <span class="badge danger">Rejected</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="quick-actions">
+            <h4>Quick Actions</h4>
+            <button class="btn primary" @onclick="NavigateToCreate">Apply for Leave</button>
+            <button class="btn success" @onclick="LoadApprovedLeaves">View Approved</button>
+            <button class="btn warning" @onclick="LoadPendingLeaves">View Pending</button>
+            <button class="btn secondary" @onclick="LoadAllLeaves">View All</button>
+        </div>
+    </div>
+}
+
+<style>
+    .navbar{
+        background-color: #333;
+        color:#fff;
+        padding: 1em;
+        text-align: right;
+    }
+    .page-title {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .sub-heading {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .container-box {
+        background-color: #D0E8FB;
+        padding: 40px 20px;
+        border-radius: 12px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .summary-card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+        .styled-table th, .styled-table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .styled-table thead {
+            background-color: #e0f7fa;
+        }
+
+    .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        font-weight: 600;
+        color: white;
+    }
+
+        .badge.success {
+            background-color: #22c55e;
+        }
+
+        .badge.warning {
+            background-color: #f59e0b;
+        }
+
+        .badge.danger {
+            background-color: #ef4444;
+        }
+
+    .quick-actions {
+        text-align: center;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+        .quick-actions h4 {
+            margin-bottom: 20px;
+        }
+
+    .btn {
+        padding: 10px 18px;
+        margin: 5px;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        color: white;
+    }
+
+        .btn.primary {
+            background-color: #3b82f6;
+        }
+
+        .btn.success {
+            background-color: #16a34a;
+        }
+
+        .btn.warning {
+            background-color: #f59e0b;
+        }
+
+        .btn.secondary {
+            background-color: #6b7280;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+</style>
+
+@code {
+    [Parameter]
+    public int UserId { get; set; }
+
+    private bool IsLoading { get; set; } = true;
+    private User UserInfo { get; set; } = new User();
+    private List<LeaveRequest> UserLeaves { get; set; } = new List<LeaveRequest>();
+
+    private int ApprovedCount { get; set; }
+    private int PendingCount { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var parsedUserId))
+        {
+            NavigationManager.NavigateTo("/login");
+            return;
+        }
+
+        UserId = parsedUserId;
+
+        UserInfo = await UserService.GetUserByIdAsync(UserId);
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+
+        ApprovedCount = UserLeaves.Count(l => l.Status == "Approved");
+        PendingCount = UserLeaves.Count(l => l.Status == "Pending");
+
+        IsLoading = false;
+    }
+
+    private void NavigateToCreate()
+    {
+        NavigationManager.NavigateTo("/create-leave");
+    }
+
+    private async Task LoadAllLeaves()
+    {
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId)).ToList();
+        StateHasChanged();
+    }
+
+    private async Task LoadPendingLeaves()
+    {
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId))
+            .Where(l => l.Status == "Pending").ToList();
+        StateHasChanged();
+    }
+
+    private async Task LoadApprovedLeaves()
+    {
+        UserLeaves = (await LeaveRequestService.GetUserLeaveRequestsAsync(UserId))
+            .Where(l => l.Status == "Approved").ToList();
+        StateHasChanged();
+    }
+
+    private LoginModel loginModel = new LoginModel();
+    private string errorMessage = string.Empty;
+
+    //naya
+
+
+    private class LoginResponse
+    {
+        public string Token { get; set; }
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Role { get; set; }
+    }
+    private async Task HandleLogin()
+    {
+        errorMessage = string.Empty;
+
+        var response = await Http.PostAsJsonAsync("http://localhost:5051/api/user/login", loginModel);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var responseBody = await response.Content.ReadFromJsonAsync<LoginResponse>();
+
+            if (responseBody == null)
+            {
+                errorMessage = "Invalid server response.";
+                return;
+            }
+
+            await LocalStorage.SetItemAsync("auth_token", responseBody.Token);
+            await LocalStorage.SetItemAsync("userId", responseBody.UserId);
+            await LocalStorage.SetItemAsync("username", responseBody.Username);
+            await LocalStorage.SetItemAsync("email", responseBody.Email);
+            await LocalStorage.SetItemAsync("role", responseBody.Role);
+
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", responseBody.Token);
+
+            if (responseBody.Role == "Admin")
+            {
+                NavigationManager.NavigateTo("/admin-leaves");
+            }
+            else
+            {
+                NavigationManager.NavigateTo($"/user-leaves/{responseBody.UserId}");
+            }
+        }
+        else
+        {
+            var responseContent = await response.Content.ReadAsStringAsync();
+            errorMessage = $"Login failed: {responseContent}".Trim('"');
+        }
+    }
+
+
+    private class LoginModel
+    {
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email format.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Password is required.")]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters.")]
+        public string Password { get; set; }
+    }
+}
+
+
+ 
+
+
+@* 
+ @page "/user-leaves/{UserId:int}"
+
+@using BlazorApp.Interface
+@using Shared.Entities
+@inject ILeaveRequestService LeaveRequestService
+@inject IUserService UserService
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<h1 class="text-center">LeaveManagement</h1>
+
+<h5 class="text-center">Hello @Username</h5>
+<p class="text-center">Welcome! Here you can view your leave requests.</p>
+
+@if (IsLoading)
+{
+    <p>Loading...</p>
+}
+else if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p class="text-danger">@ErrorMessage</p>
+}
+else
+{
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Reason</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var leave in UserLeaves)
+            {
+                <tr>
+                    <td>@leave.StartDate.ToString("yyyy-MM-dd")</td>
+                    <td>@leave.EndDate.ToString("yyyy-MM-dd")</td>
+                    <td>@leave.Reason</td>
+                    <td>
+                        @if (leave.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                        else if (leave.Status == "Approved")
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else if (leave.Status == "Rejected")
+                        {
+                            <span class="badge bg-danger">Rejected</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="quick-actions">
+        <h4>Quick Actions</h4>
+        <button @onclick="ViewPending">See Pending Leaves</button>
+        <button @onclick="ViewApproved">See Approved Leaves</button>
+        <button @onclick="ViewRejected">See Rejected Leaves</button>
+        <button @onclick="ViewAll">See All Leaves</button>
+    </div>
+}
+
+<style>
+    .text-center {
+        text-align: center;
+    }
+
+    .page-background {
+        background-color: #E0F7FA;
+        padding: 20px;
+        min-height: 100vh;
+    }
+
+    .quick-actions {
+        margin-top: 30px;
+        padding: 20px;
+        background: #B2EBF2;
+        border-radius: 12px;
+    }
+
+    .quick-actions h4 {
+        margin-bottom: 16px;
+    }
+
+    .quick-actions button {
+        margin-right: 12px;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        border-radius: 12px;
+        border: none;
+        color: #fff;
+        background: #00ACC1;
+        transition: background 0.3s ease;
+    }
+
+    .quick-actions button:hover {
+        background: #0097A7;
+    }
+</style>
+
+@code {
+    [Parameter]
+    public int UserId { get; set; }
+
+    private List<LeaveRequest> UserLeaves = new List<LeaveRequest>();
+
+    private bool IsLoading = true;
+
+    private string ErrorMessage;
+
+    private string Username = "Username Here";
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+
+        try
+        {
+            UserLeaves = await LeaveRequestService.GetUserLeaveRequestsAsync(UserId);
+            // If you have a way to fetch the user's name, do it here
+            Username = (await UserService.GetUserByIdAsync(UserId)).Username;
+
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Unable to fetch leaves for this user: {ex.Message}.";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void ViewPending()
+    {
+        UserLeaves = UserLeaves.Where(l => l.Status == "Pending").ToList();
+    }
+
+    private void ViewApproved()
+    {
+        UserLeaves = UserLeaves.Where(l => l.Status == "Approved").ToList();
+    }
+
+    private void ViewRejected()
+    {
+        UserLeaves = UserLeaves.Where(l => l.Status == "Rejected").ToList();
+    }
+
+    private void ViewAll()
+    {
+        _ = OnInitializedAsync();
+    }
+}
+ *@

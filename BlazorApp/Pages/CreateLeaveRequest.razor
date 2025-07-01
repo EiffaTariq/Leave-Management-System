@@ -1,0 +1,536 @@
+﻿@* @page "/create-leave"
+
+@using BlazorApp.Interface
+@using Shared.Entities;
+
+@inject ILeaveRequestService LeaveRequestService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<h3>Create Leave Request</h3>
+
+<EditForm Model="@leave" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Start Date</label>
+        <InputDate @bind-Value="@leave.StartDate" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>End Date</label>
+        <InputDate @bind-Value="@leave.EndDate" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+    private LeaveRequest leave = new LeaveRequest();
+
+    private bool IsSubmitting = false;
+
+    private async Task OnValidSubmit()
+    {
+        IsSubmitting = true;
+
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) ||
+            !int.TryParse(userIdString, out var parsedUserId))
+        {
+            // Redirect to login if not authenticated
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
+        leave.UserId = parsedUserId;
+        leave.Status = "Pending";
+
+        var result = await LeaveRequestService.CreateLeaveRequestAsync(leave);
+
+        if (result)
+        {
+            // Redirect back to User Leaves after submission
+            NavigationManager.NavigateTo($"/user-leaves/{parsedUserId}");
+
+        }
+        else
+        {
+            // Handle submission failure (show a messag
+        }
+
+        IsSubmitting = false;
+    }
+}
+ *@
+
+
+@* chal raha tha lekin reason aur type nahi mangta *@
+
+@* 
+ @page "/create-leave"
+
+@using BlazorApp.Interface
+@using Shared.Entities
+@inject ILeaveRequestService LeaveRequestService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<h3>Create a new leave</h3>
+
+<EditForm Model="@leave" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Start Date</label>
+        <InputDate @bind-Value="leave.StartDate" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>End Date</label>
+        <InputDate @bind-Value="leave.EndDate" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary" disabled="@IsSubmitting">
+        Apply for leave
+    </button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <div class="alert alert-danger mt-3">
+        @ErrorMessage
+    </div>
+}
+
+@code {
+    private Shared.Entities.LeaveRequest leave = new Shared.Entities.LeaveRequest();
+    private bool IsSubmitting = false;
+    private string ErrorMessage;
+
+    private async Task OnValidSubmit()
+    {
+        IsSubmitting = true;
+        ErrorMessage = string.Empty;
+
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) ||
+            !int.TryParse(userIdString, out var parsedUserId))
+        {
+            // Redirect to login if not authenticated
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
+        var leaveDto = new Shared.Entities.LeaveRequestDto
+            {
+                UserId = parsedUserId,
+                StartDate = leave.StartDate,
+                EndDate = leave.EndDate,
+                Status = "Pending"
+            };
+
+        var result = await LeaveRequestService.CreateLeaveRequestAsync(leaveDto);
+
+        if (result.Success)
+        {
+            // Redirect back to User Leaves after submission
+            NavigationManager.NavigateTo($"/user-leaves/{parsedUserId}");
+
+        }
+        else
+        {
+            ErrorMessage = "Failed to submit leave request. Please try again.";
+        }
+
+        IsSubmitting = false;
+    }
+}
+ *@
+@* 
+ @page "/create-leave"
+
+@using BlazorApp.Services
+@using Shared.Entities
+@using BlazorApp.Interface
+@inject ILeaveRequestService LeaveRequestService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<h3>Create a new leave</h3>
+
+<EditForm Model="@leaveDto" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Start Date</label>
+        <InputDate @bind-Value="leaveDto.StartDate" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>End Date</label>
+        <InputDate @bind-Value="leaveDto.EndDate" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Reasons</label>
+        <InputTextArea @bind-Value="leaveDto.Reason" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Leave Type</label>
+        <InputSelect @bind-Value="leaveDto.LeaveTypeId">
+            <option value="">Select</option>
+            <option value="1">Sick</option>
+            <option value="2">Casual</option>
+            <option value="2">Emergency</option>
+        </InputSelect>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private LeaveRequestDto leaveDto = new()
+        {
+            UserId = 0,
+            StartDate = DateTime.Today,
+            EndDate = DateTime.Today
+        };
+
+    private bool isSubmitting = false;
+
+    private async Task HandleValidSubmit()
+    {
+        isSubmitting = true;
+
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) ||
+            !int.TryParse(userIdString, out var parsedUserId))
+        {
+            // Redirect to login if not authenticated
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
+        leaveDto.UserId = parsedUserId;
+
+        var response = await LeaveRequestService.CreateLeaveRequestAsync(leaveDto);
+
+        isSubmitting = false;
+
+        if (response.Success)
+        {
+            // Redirect after successful submission
+            NavigationManager.NavigateTo($"/user-leaves/{parsedUserId}");
+
+        }
+        else
+        {
+            // Handle submission failure
+            Console.WriteLine("Failed to submit leave: " + response.Message);
+        }
+    }
+}
+ *@
+@* 
+@page "/create-leave"
+
+@using Shared.Entities
+@using BlazorApp.Interface
+@inject ILeaveRequestService LeaveRequestService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<h3>Create Leave</h3>
+
+<EditForm Model="@leaveDto" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+ 
+    <label>Start Date</label>
+    <InputDate @bind-Value="@leaveDto.StartDate" />
+
+    <label>End Date</label>
+    <InputDate @bind-Value="@leaveDto.EndDate" />
+
+    <label>Reason</label>
+    <InputText @bind-Value="@leaveDto.Reason" />
+
+        <button type="submit">Save</button>
+   
+</EditForm>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="@(isSuccess ? "alert alert-info" : "alert alert-danger")">
+        @message
+    </div>
+}
+<style>
+      .light-blue-background{
+        background-color: #D0E8FB;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+</style>
+@code {
+    private string message = "";
+
+    private bool isSuccess = false;
+    private bool IsLoading { get; set; } = true;
+    private string errorMessage = string.Empty;
+    private bool isSubmitting = false;
+    private LeaveRequestDto leaveDto = new()
+        {
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow,
+            Reason = ""
+        };
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) ||
+            !int.TryParse(userIdString, out var parsedUserId))
+        {
+            // Redirect to login if not authenticated
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
+        leaveDto.UserId = parsedUserId;
+
+
+        IsLoading = false;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+
+        var response = await LeaveRequestService.CreateLeaveRequestAsync(leaveDto);
+
+        if (response.Success)
+        {
+            isSuccess = true;
+            message = response.Message;
+            NavigationManager.NavigateTo($"/leave-confirmation");
+
+        }
+        else
+        {
+            isSuccess = false;
+            message = response.Message;
+            //errorMessage = "An error has occured";
+        }
+    }
+} *@
+
+@page "/create-leave"
+
+@using Shared.Entities
+@using BlazorApp.Interface
+@inject ILeaveRequestService LeaveRequestService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+<nav>
+
+</nav>
+<div class="light-blue-background">
+    <div class="form-card">
+        <h3>Create a Leave Request</h3>
+
+        <EditForm Model="@leaveDto" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label>Start Date</label>
+                <InputDate class="form-control" @bind-Value="@leaveDto.StartDate" />
+            </div>
+
+            <div class="form-group">
+                <label>End Date</label>
+                <InputDate class="form-control" @bind-Value="@leaveDto.EndDate" />
+            </div>
+
+            <div class="form-group">
+                <label>Reason</label>
+                <InputText class="form-control" @bind-Value="@leaveDto.Reason" />
+            </div>
+
+            <button type="submit" class="btn-submit" disabled="@isSubmitting">Submit</button>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(message))
+        {
+            <div class="@($"alert {(isSuccess ? "info" : "error")}")">
+                @message
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .light-blue-background {
+        background-color: #D0E8FB;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .form-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    h3 {
+        text-align: center;
+        margin-bottom: 24px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #444;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #6cb2eb;
+            outline: none;
+        }
+
+    .btn-submit {
+        width: 100%;
+        background-color: #3b82f6;
+        color: #fff;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background-color: #2563eb;
+        }
+
+    .alert {
+        margin-top: 20px;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+        .alert.info {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+
+        .alert.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #f87171;
+        }
+</style>
+
+@code {
+    private string message = "";
+    private bool isSuccess = false;
+    private bool isSubmitting = false;
+
+    private LeaveRequestDto leaveDto = new()
+        {
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow,
+            Reason = ""
+        };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var parsedUserId))
+        {
+            NavigationManager.NavigateTo("/login");
+            return;
+        }
+
+        leaveDto.UserId = parsedUserId;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        isSubmitting = true;
+        message = "";
+
+        var response = await LeaveRequestService.CreateLeaveRequestAsync(leaveDto);
+
+        if (response.Success)
+        {
+            isSuccess = true;
+            message = response.Message;
+            NavigationManager.NavigateTo("/leave-confirmation");
+        }
+        else
+        {
+            isSuccess = false;
+            message = response.Message;
+        }
+
+        isSubmitting = false;
+    }
+}
+

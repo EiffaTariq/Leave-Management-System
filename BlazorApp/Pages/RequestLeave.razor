@@ -1,0 +1,82 @@
+﻿@* @page "/request-leave"
+@inject ILeaveRequestService LeaveRequestService
+@using Shared.Entities;
+@using BlazorApp.Interface;
+<h3>Request Leave</h3>
+
+<EditForm Model="@leaveRequest" OnValidSubmit="SubmitRequest">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="leaveType">Leave Type</label>
+        <InputText id="leaveType" class="form-control" @bind-Value="leaveRequest.LeaveType" />
+    </div>
+
+    <div class="mb-3">
+        <label for="startDate">Start Date</label>
+        <InputDate id="startDate" class="form-control" @bind-Value="leaveRequest.StartDate" />
+    </div>
+
+    <div class="mb-3">
+        <label for="endDate">End Date</label>
+        <InputDate id="endDate" class="form-control" @bind-Value="leaveRequest.EndDate" />
+    </div>
+
+    <div class="mb-3">
+        <label for="reason">Reason</label>
+        <InputTextArea id="reason" class="form-control" @bind-Value="leaveRequest.Reason" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    @if (!string.IsNullOrWhiteSpace(successMessage))
+    {
+        <div class="alert alert-success mt-3">@successMessage</div>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(errorMessage))
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
+</EditForm>
+
+@code {
+    private LeaveRequestDto leaveRequest = new();
+    private string successMessage = "";
+    private string errorMessage = "";
+
+    // private async Task SubmitRequest()
+    // {
+    //     successMessage = errorMessage = "";
+
+    //     var result = await LeaveRequestService.CreateLeaveRequestAsync(leaveRequest);
+
+    //     if (result != null)
+    //     {
+    //         successMessage = "Leave request submitted successfully.";
+    //         leaveRequest = new(); // Clear form
+    //     }
+    //     else
+    //     {
+    //         errorMessage = "Failed to submit leave request.";
+    //     }
+    // }
+    private async Task SubmitRequest()
+    {
+        successMessage = errorMessage = "";
+
+        try
+        {
+            await LeaveRequestService.CreateLeaveRequestAsync(leaveRequest);
+            successMessage = "Leave request submitted successfully.";
+            leaveRequest = new(); // Clear form
+        }
+        catch
+        {
+            errorMessage = "Failed to submit leave request.";
+        }
+    }
+
+}
+ *@

@@ -1,0 +1,89 @@
+﻿@* @page "/leave-confirmation"
+@inject NavigationManager NavManager
+<h3>Your leave request has been submitted successfully!</h3>
+
+<p>Thank you for submitting your leave request.</p>
+
+<button class="btn btn-primary" @onclick="GoBackToUserLeavePage">
+    Back to Your Leaves
+</button>
+
+@code {
+    private void GoBackToUserLeavePage()
+    {
+        NavManager.NavigateTo("/user-leaves");
+
+    }
+
+} *@
+@page "/leave-confirmation"
+@inject NavigationManager NavManager
+@inject IJSRuntime JS
+
+<div class="confirmation-container">
+    <div class="confirmation-card">
+        <h3>Leave Request Submitted</h3>
+        <p>Thank you for submitting your leave request. You'll be notified once it's reviewed.</p>
+
+        <button class="btn primary" @onclick="GoBackToUserLeavePage">
+            Back to Your Leaves
+        </button>
+    </div>
+</div>
+
+<style>
+    .confirmation-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #D0E8FB;
+        padding: 20px;
+    }
+
+    .confirmation-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .confirmation-card h3 {
+        color: #22c55e;
+        margin-bottom: 12px;
+    }
+
+    .btn.primary {
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .btn.primary:hover {
+        background-color: #2563eb;
+    }
+</style>
+
+@code {
+    private async Task GoBackToUserLeavePage()
+    {
+        var userIdString = await JS.InvokeAsync<string>("localStorage.getItem", "userId");
+
+        if (int.TryParse(userIdString, out int userId))
+        {
+            NavManager.NavigateTo($"/user-leaves/{userId}");
+        }
+        else
+        {
+            NavManager.NavigateTo("/login");
+        }
+    }
+}
