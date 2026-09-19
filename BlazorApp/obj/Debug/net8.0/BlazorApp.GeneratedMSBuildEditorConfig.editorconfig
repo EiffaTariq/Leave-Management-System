@@ -21,67 +21,63 @@ build_property._SupportedPlatformList = browser
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = BlazorApp
 build_property.RootNamespace = BlazorApp
-build_property.ProjectDir = D:\0\LeaveManagement\LeaveManagement\BlazorApp\
+build_property.ProjectDir = E:\Leave-Management-System\BlazorApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\0\LeaveManagement\LeaveManagement\BlazorApp
+build_property.MSBuildProjectDirectory = E:\Leave-Management-System\BlazorApp
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/App.razor]
+[E:/Leave-Management-System/BlazorApp/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/AdminLeavePage.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/AdminLeavePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5MZWF2ZVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/Counter.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/CreateLeaveRequest.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/CreateLeaveRequest.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlTGVhdmVSZXF1ZXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/Home.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/LeaveConfirmation.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/LeaveConfirmation.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVhdmVDb25maXJtYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/LoginPage.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/LoginPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/RegisterPage.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/RegisterPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/RequestLeave.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/RequestLeave.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVxdWVzdExlYXZlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/UserLeavePage.razor]
+[E:/Leave-Management-System/BlazorApp/Pages/UserLeavePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckxlYXZlUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/_Imports.razor]
+[E:/Leave-Management-System/BlazorApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Layout/MainLayout.razor]
+[E:/Leave-Management-System/BlazorApp/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-kc989pta5g
 
-[D:/0/LeaveManagement/LeaveManagement/BlazorApp/Layout/NavMenu.razor]
+[E:/Leave-Management-System/BlazorApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-iqpjrornlq

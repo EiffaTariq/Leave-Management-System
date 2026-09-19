@@ -9,6 +9,7 @@ using System.Text;
 using Microsoft.OData.ModelBuilder;
 using Microsoft.AspNetCore.OData;
 using Shared.Entities;
+using WebApi.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
@@ -25,6 +26,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILeaveService, LeaveService>();
+builder.Services.AddSignalR();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -40,20 +42,6 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 builder.Services.AddHttpContextAccessor();
-
-
-//builder.Services.AddControllers()
-//    .AddOData(opt =>
-//    {
-//        var odataBuilder = new ODataConventionModelBuilder();
-//        odataBuilder.EntitySet<LeaveRequestDto>("LeaveRequests");
-//        opt.AddRouteComponents("odata", odataBuilder.GetEdmModel())
-//            .Filter()
-//            .Select()
-//            .OrderBy()
-//            .Expand()
-//            .Count();
-//    });
 
 
 var secretKey = builder.Configuration["JwtSettings:SecretKey"] ??
@@ -76,16 +64,17 @@ builder.Logging.AddConsole();
 var app = builder.Build();
 
 app.UseSession();
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 app.UseCors("AllowBlazor");
+
 app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<NotificationHub>("/notificationHub");
 
 app.Run();

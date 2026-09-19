@@ -2827,11 +2827,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj",
+      "projectUniqueName": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj",
+      "projectPath": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj",
       "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-      "outputPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\obj\\",
+      "outputPath": "E:\\Leave-Management-System\\SharedEntities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",

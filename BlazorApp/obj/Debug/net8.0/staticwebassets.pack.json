@@ -1,43 +1,43 @@
 {
   "Files": [
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\obj\\Debug\\net8.0\\compressed\\feoayz29af.gz",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\obj\\Debug\\net8.0\\compressed\\feoayz29af.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorApp.styles.css",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorApp.styles.css",
       "PackagePath": "staticwebassets\\BlazorApp.styles.css"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\css\\app.css",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\favicon.png",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\icon-192.png",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\index.html",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\wwwroot\\sample-data\\weather.json",
+      "Id": "E:\\Leave-Management-System\\BlazorApp\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {

@@ -19,7 +19,6 @@ namespace WebApi.Interface
 
         Task ApproveLeaveAsync(int leaveId, string adminRemarks);
         Task RejectLeaveAsync(int leaveId, string adminRemarks);
-        Task CreateAsync(LeaveRequest leaveRequest);
     }
 
 }

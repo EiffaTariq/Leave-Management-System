@@ -1,85 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\0\\LeaveManagement\\LeaveManagement\\",
+  "WorkspaceRootPath": "E:\\Leave-Management-System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__ProjectModels/LeaveManagementDb/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\services\\leaverequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\services\\leaverequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|d:\\0\\leavemanagement\\leavemanagement\\sharedentities\\entities\\leaverequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|solutionrelative:sharedentities\\entities\\leaverequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\controllers\\leaverequestsodatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\leaverequestsodatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\pages\\userleavepage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\userleavepage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\pages\\loginpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\loginpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\pages\\createleaverequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\createleaverequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|d:\\0\\leavemanagement\\leavemanagement\\sharedentities\\entities\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|solutionrelative:sharedentities\\entities\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|d:\\0\\leavemanagement\\leavemanagement\\sharedentities\\entities\\leaverequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|solutionrelative:sharedentities\\entities\\leaverequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|d:\\0\\leavemanagement\\leavemanagement\\sharedentities\\entities\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7822360-565A-4869-8B60-F270AEC91F60}|SharedEntities\\Shared.csproj|solutionrelative:sharedentities\\entities\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\controllers\\leaverequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\leaverequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\services\\leaveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\services\\leaveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\pages\\adminleavepage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|e:\\leave-management-system\\blazorapp\\pages\\adminleavepage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\adminleavepage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|d:\\0\\leavemanagement\\leavemanagement\\blazorapp\\pages\\leaveconfirmation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\leaveconfirmation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|e:\\leave-management-system\\webapi\\services\\leaveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\services\\leaveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|d:\\0\\leavemanagement\\leavemanagement\\webapi\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|e:\\leave-management-system\\webapi\\interface\\ileaveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\interface\\ileaveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|e:\\leave-management-system\\webapi\\controllers\\leaverequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\leaverequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|e:\\leave-management-system\\webapi\\repositories\\leaverequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\repositories\\leaverequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|e:\\leave-management-system\\webapi\\hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\hubs\\notificationhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|e:\\leave-management-system\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914C16A4-0F1F-4D6B-B4EF-370A9D8B9E5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|e:\\leave-management-system\\blazorapp\\pages\\createleaverequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\createleaverequest.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|e:\\leave-management-system\\blazorapp\\pages\\loginpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{85753566-B5D7-4F33-AA84-908B34E7B98D}|BlazorApp\\BlazorApp.csproj|solutionrelative:blazorapp\\pages\\loginpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -89,8 +46,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminLeavePage.razor",
+              "DocumentMoniker": "E:\\Leave-Management-System\\BlazorApp\\Pages\\AdminLeavePage.razor",
+              "RelativeDocumentMoniker": "BlazorApp\\Pages\\AdminLeavePage.razor",
+              "ToolTip": "E:\\Leave-Management-System\\BlazorApp\\Pages\\AdminLeavePage.razor",
+              "RelativeToolTip": "BlazorApp\\Pages\\AdminLeavePage.razor",
+              "ViewState": "AgIAAIABAAAAAAAAAAAAAA0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-19T13:58:23.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ILeaveService.cs",
+              "DocumentMoniker": "E:\\Leave-Management-System\\WebApi\\Interface\\ILeaveService.cs",
+              "RelativeDocumentMoniker": "WebApi\\Interface\\ILeaveService.cs",
+              "ToolTip": "E:\\Leave-Management-System\\WebApi\\Interface\\ILeaveService.cs",
+              "RelativeToolTip": "WebApi\\Interface\\ILeaveService.cs",
+              "ViewState": "AgIAAAwAAAAgMTMzMzM0wBQAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-19T13:55:00.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeaveRequestController.cs",
+              "DocumentMoniker": "E:\\Leave-Management-System\\WebApi\\Controllers\\LeaveRequestController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\LeaveRequestController.cs",
+              "ToolTip": "E:\\Leave-Management-System\\WebApi\\Controllers\\LeaveRequestController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\LeaveRequestController.cs",
+              "ViewState": "AgIAABkAAAAAY2ZmZmYQwC4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-19T13:49:51.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LeaveRequestRepository.cs",
+              "DocumentMoniker": "E:\\Leave-Management-System\\WebApi\\Repositories\\LeaveRequestRepository.cs",
+              "RelativeDocumentMoniker": "WebApi\\Repositories\\LeaveRequestRepository.cs",
+              "ToolTip": "E:\\Leave-Management-System\\WebApi\\Repositories\\LeaveRequestRepository.cs",
+              "RelativeToolTip": "WebApi\\Repositories\\LeaveRequestRepository.cs",
+              "ViewState": "AgIAADwAAACAVGZmZmYowIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-19T13:29:00.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeaveService.cs",
+              "DocumentMoniker": "E:\\Leave-Management-System\\WebApi\\Services\\LeaveService.cs",
+              "RelativeDocumentMoniker": "WebApi\\Services\\LeaveService.cs",
+              "ToolTip": "E:\\Leave-Management-System\\WebApi\\Services\\LeaveService.cs",
+              "RelativeToolTip": "WebApi\\Services\\LeaveService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-19T12:49:13.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Leave-Management-System\\WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "WebApi\\Program.cs",
+              "ToolTip": "E:\\Leave-Management-System\\WebApi\\Program.cs",
+              "RelativeToolTip": "WebApi\\Program.cs",
+              "ViewState": "AgIAADwAAAAAOjMzMzMbwEIAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-19T12:39:44.807Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -105,172 +140,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dbo.Users [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__ProjectModels/LeaveManagementDb/True/SqlTable/dbo.Users.sql",
-              "ToolTip": "dbo.Users [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-07-01T11:52:20.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "WebApi\\appsettings.json",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\appsettings.json",
-              "RelativeToolTip": "WebApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-01T11:51:44.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LeaveRequest.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\LeaveRequest.cs",
-              "RelativeDocumentMoniker": "SharedEntities\\Entities\\LeaveRequest.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\LeaveRequest.cs",
-              "RelativeToolTip": "SharedEntities\\Entities\\LeaveRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T09:31:30.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LeaveRequestService.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Services\\LeaveRequestService.cs",
-              "RelativeDocumentMoniker": "BlazorApp\\Services\\LeaveRequestService.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Services\\LeaveRequestService.cs",
-              "RelativeToolTip": "BlazorApp\\Services\\LeaveRequestService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T16:26:52.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\LoginDto.cs",
-              "RelativeDocumentMoniker": "SharedEntities\\Entities\\LoginDto.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\LoginDto.cs",
-              "RelativeToolTip": "SharedEntities\\Entities\\LoginDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T16:25:10.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LeaveRequestDto.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\LeaveRequestDto.cs",
-              "RelativeDocumentMoniker": "SharedEntities\\Entities\\LeaveRequestDto.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\LeaveRequestDto.cs",
-              "RelativeToolTip": "SharedEntities\\Entities\\LeaveRequestDto.cs",
-              "ViewState": "AgIAAA0AAACAlpmZmZkdwBgAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T16:24:59.053Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AuthResponse.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\AuthResponse.cs",
-              "RelativeDocumentMoniker": "SharedEntities\\Entities\\AuthResponse.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Entities\\AuthResponse.cs",
-              "RelativeToolTip": "SharedEntities\\Entities\\AuthResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T16:24:35.111Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "LeaveService.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Services\\LeaveService.cs",
-              "RelativeDocumentMoniker": "WebApi\\Services\\LeaveService.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Services\\LeaveService.cs",
-              "RelativeToolTip": "WebApi\\Services\\LeaveService.cs",
-              "ViewState": "AgIAAA0AAABgmJmZmZkhwBoAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:55:08.606Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LeaveRequestsODataController.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\LeaveRequestsODataController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\LeaveRequestsODataController.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\LeaveRequestsODataController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\LeaveRequestsODataController.cs",
-              "ViewState": "AgIAAAAAAADYmZmZmZkuwBsAAAAaAAAAAAAAAA==",
+              "Title": "NotificationHub.cs",
+              "DocumentMoniker": "E:\\Leave-Management-System\\WebApi\\Hubs\\NotificationHub.cs",
+              "RelativeDocumentMoniker": "WebApi\\Hubs\\NotificationHub.cs",
+              "ToolTip": "E:\\Leave-Management-System\\WebApi\\Hubs\\NotificationHub.cs",
+              "RelativeToolTip": "WebApi\\Hubs\\NotificationHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:53:50.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAABAAAACAnJmZmZklwBcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:29:57.878Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "WebApi\\Program.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Program.cs",
-              "RelativeToolTip": "WebApi\\Program.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAABivSUAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:14:46.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "LeaveConfirmation.razor",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\LeaveConfirmation.razor",
-              "RelativeDocumentMoniker": "BlazorApp\\Pages\\LeaveConfirmation.razor",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\LeaveConfirmation.razor",
-              "RelativeToolTip": "BlazorApp\\Pages\\LeaveConfirmation.razor",
-              "ViewState": "AgIAAAkAAAAAMzMzMzMbwBYAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T14:43:33.62Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserLeavePage.razor",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\UserLeavePage.razor",
-              "RelativeDocumentMoniker": "BlazorApp\\Pages\\UserLeavePage.razor",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\UserLeavePage.razor",
-              "RelativeToolTip": "BlazorApp\\Pages\\UserLeavePage.razor",
-              "ViewState": "AgIAAKYAAAAAYMvMzMwAwK0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T14:26:51.975Z",
+              "WhenOpened": "2026-09-19T12:37:48.163Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "LoginPage.razor",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\LoginPage.razor",
+              "DocumentMoniker": "E:\\Leave-Management-System\\BlazorApp\\Pages\\LoginPage.razor",
               "RelativeDocumentMoniker": "BlazorApp\\Pages\\LoginPage.razor",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\LoginPage.razor",
+              "ToolTip": "E:\\Leave-Management-System\\BlazorApp\\Pages\\LoginPage.razor",
               "RelativeToolTip": "BlazorApp\\Pages\\LoginPage.razor",
               "ViewState": "AgIAAK0AAAAAVDIzMzP7v7YAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -279,76 +166,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "CreateLeaveRequest.razor",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\CreateLeaveRequest.razor",
+              "DocumentMoniker": "E:\\Leave-Management-System\\BlazorApp\\Pages\\CreateLeaveRequest.razor",
               "RelativeDocumentMoniker": "BlazorApp\\Pages\\CreateLeaveRequest.razor",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\CreateLeaveRequest.razor",
+              "ToolTip": "E:\\Leave-Management-System\\BlazorApp\\Pages\\CreateLeaveRequest.razor",
               "RelativeToolTip": "BlazorApp\\Pages\\CreateLeaveRequest.razor",
-              "ViewState": "AgIAAFQBAAAAy8zMzMwnwGUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMQBAAAAGjMzMzMbwBQCAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-17T13:58:16.071Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AdminLeavePage.razor",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\AdminLeavePage.razor",
-              "RelativeDocumentMoniker": "BlazorApp\\Pages\\AdminLeavePage.razor",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Pages\\AdminLeavePage.razor",
-              "RelativeToolTip": "BlazorApp\\Pages\\AdminLeavePage.razor",
-              "ViewState": "AgIAAIMFAAAAAAAAAAAiwJUFAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T13:09:09.006Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "BlazorApp\\Services\\UserService.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\Services\\UserService.cs",
-              "RelativeToolTip": "BlazorApp\\Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T12:22:57.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "LeaveRequestController.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\LeaveRequestController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\LeaveRequestController.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\LeaveRequestController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\LeaveRequestController.cs",
-              "ViewState": "AgIAAHYAAAAAamZmZmYjwBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T10:47:30.546Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "WebApi\\Services\\UserService.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Services\\UserService.cs",
-              "RelativeToolTip": "WebApi\\Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T10:25:13.489Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\Controllers\\UserController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAFIBAAAAAAAAAAAcwGQBAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T10:24:40.933Z"
             }
           ]
         }

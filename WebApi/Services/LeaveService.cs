@@ -1,6 +1,8 @@
 ﻿using Azure.Core;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Shared.Entities;
+using WebApi.Hubs;
 using WebApi.Interface;
 using WebApi.Repositories;
 
@@ -10,11 +12,14 @@ namespace WebApi.Services
     {
         private readonly ILeaveRequestRepository _leaveRepo;
         private readonly IUserRepository _userRepo;
+        private readonly IHubContext<NotificationHub> _hub;
 
-        public LeaveService(ILeaveRequestRepository leaveRepo, IUserRepository userRepo)
+        public LeaveService(ILeaveRequestRepository leaveRepo, IUserRepository userRepo,
+            IHubContext<NotificationHub> hub)
         {
             _leaveRepo = leaveRepo;
             _userRepo = userRepo;
+            _hub = hub;
         }
 
         public async Task<IEnumerable<LeaveRequestDto>> GetAllAsync()
@@ -30,7 +35,6 @@ namespace WebApi.Services
                 Status = l.Status
             });
         }
-        //public Task<IEnumerable<LeaveRequestDto>> GetAllAsync() => _leaveRepo.GetAllAsync();
 
         public Task<LeaveRequest?> GetByIdAsync(int id) => _leaveRepo.GetByIdAsync(id);
         public async Task<IEnumerable<LeaveRequest>> GetLeaveRequestsByStatusAsync(string status)
@@ -51,7 +55,6 @@ namespace WebApi.Services
             return await _leaveRepo.GetUserByLeaveIdAsync(leaveId);
         }
 
-        //public async Task<bool> CreateLeaveAsync(LeaveRequestDto leave)
         public async Task<ServiceResponse> CreateLeaveAsync(LeaveRequestDto leave)
 
         {
@@ -90,101 +93,18 @@ namespace WebApi.Services
             };
 
             await _leaveRepo.AddAsync(leaveReq);
+            Console.WriteLine($"Sending notification for {leaveReq.Username}");
+            await _hub.Clients.All.SendAsync("ReceiveNotification",
+                $"{leaveReq.Username} submitted a leave request");
             return new ServiceResponse { Success = true, Message = "Leave request submitted successfully" };
+       
 
-
-
-            //var user = await _userRepo.GetByIdAsync(leave.UserId);
-            //int daysRequested = (leave.EndDate - leave.StartDate).Days + 1;
-            //int remainingLeaves = user.AllowedLeavesPerYear - user.LeavesTakenThisYear;
-
-            //if (daysRequested > remainingLeaves)
-            //    return false;
-            //var leavesThisYear = await _leaveRepo.CountApprovedLeavesAsync(leave.UserId, DateTime.UtcNow.Year);
-
-            //if (leavesThisYear >= 5)
-            //{
-            //    Console.WriteLine("You have already taken maximum leaves for the year");
-            //    return false;
-            //}
-            //if (!false)
-            //{
-            //    await _leaveRepo.AddAsync(leave);
-            //}
-            //return true;
-
-            //mera khud ka
-
-
-            //var overlapping = await _leaveRepo.IsOverlappingLeaves(leave.UserId, leave.StartDate, leave.EndDate);
-            //if (overlapping)
-            //{
-            //    throw new Exception("Your leave overlaps with an existing leave.");
-            //}
-
-            ////var leavesThisYear = await _leaveRepo.CountApprovedLeavesAsync(leave.UserId, DateTime.UtcNow.Year);
-            //var user = await _leaveRepo.GetUserByLeaveIdAsync(leave.LeaveId);
-
-            //var ogUser = await _userRepo.GetByIdAsync(user.Id);
-            //if (ogUser == null)
-            //{
-            //    throw new Exception("No such UserId exists");
-            //}
-            //var leavesThisYear = ogUser.LeavesTakenThisYear;
-            //var leaveDuration = (leave.EndDate.Date - leave.StartDate.Date).Days;
-
-            //if (leavesThisYear + leaveDuration > 6)
-            //{
-            //    throw new Exception("Your leave request exceeds your maximum leave capacity.");
-            //}
-
-            //var leaveReq = new LeaveRequest
-            //{
-            //    UserId = leave.UserId,
-            //    Username = (await _userRepo.GetByIdAsync(leave.UserId))?.Username ?? "Unknown",
-            //    LeaveTypeId = leave.LeaveTypeId,
-            //    StartDate = leave.StartDate,
-            //    EndDate = leave.EndDate,
-            //    Reason = leave.Reason,
-            //    Status = "Pending"
-            //};
-
-            //await _leaveRepo.AddAsync(leaveReq);
-            //return true;
+            
         }
 
         public async Task ApproveLeaveAsync(int leaveId, string adminRemarks)
         {
-            //var leave = await _leaveRepo.GetByIdAsync(leaveId);
-
-            //if (leave == null)
-            //{
-            //    throw new Exception("Leave not found.");
-            //}
-
-            //var user = await _userRepo.GetByIdAsync(leave.UserId);
-            //if (user == null)
-            //{
-            //    throw new Exception("User not found.");
-            //}
-
-            //var leavesThisYear = await _leaveRepo.CountApprovedLeavesAsync(user.Id, DateTime.UtcNow.Year);
-            //var leaveDuration = (leave.EndDate.Date - leave.StartDate.Date).Days;
-
-            //if (user.LeavesTakenThisYear + leaveDuration > 5)
-            //{
-            //    throw new Exception("Your leave request exceeds your maximum leave capacity.");
-            //}
-
-            //leave.Status = "Approved";
-            //leave.AdminRemarks = adminRemarks;
-
-            //await _leaveRepo.UpdateAsync(leave);
-
-            //user.LeavesTakenThisYear += leaveDuration;
-
-            //await _userRepo.UpdateAsync(user);
-
+            
             var leave = await _leaveRepo.GetByIdAsync(leaveId);
             if (leave == null)
             {
@@ -235,11 +155,7 @@ namespace WebApi.Services
             return await _leaveRepo.UpdateLeaveStatusAsync(leaveId, newStatus, adminRemarks);
         }
 
-        public async Task CreateAsync(LeaveRequest leaveRequest)
-        {
-            await _leaveRepo.AddAsync(leaveRequest);
-
-        }
+   
     }
 
 }

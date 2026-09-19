@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\BlazorApp.csproj": {}
+    "E:\\Leave-Management-System\\BlazorApp\\BlazorApp.csproj": {}
   },
   "projects": {
-    "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\BlazorApp.csproj": {
+    "E:\\Leave-Management-System\\BlazorApp\\BlazorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\BlazorApp.csproj",
+        "projectUniqueName": "E:\\Leave-Management-System\\BlazorApp\\BlazorApp.csproj",
         "projectName": "BlazorApp",
-        "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\BlazorApp.csproj",
+        "projectPath": "E:\\Leave-Management-System\\BlazorApp\\BlazorApp.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "D:\\0\\LeaveManagement\\LeaveManagement\\BlazorApp\\obj\\",
+        "outputPath": "E:\\Leave-Management-System\\BlazorApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj": {
-                "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj"
+              "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj": {
+                "projectPath": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj"
               }
             }
           }
@@ -70,6 +70,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Client": {
+              "target": "Package",
+              "version": "[10.0.12, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -121,14 +125,14 @@
         }
       }
     },
-    "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj": {
+    "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj",
+        "projectUniqueName": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj",
+        "projectPath": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\obj\\",
+        "outputPath": "E:\\Leave-Management-System\\SharedEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",

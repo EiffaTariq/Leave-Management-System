@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\WebApi.csproj": {}
+    "E:\\Leave-Management-System\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj": {
+    "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj",
+        "projectUniqueName": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj",
+        "projectPath": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\obj\\",
+        "outputPath": "E:\\Leave-Management-System\\SharedEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -73,14 +73,14 @@
         }
       }
     },
-    "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\WebApi.csproj": {
+    "E:\\Leave-Management-System\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "E:\\Leave-Management-System\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\WebApi.csproj",
+        "projectPath": "E:\\Leave-Management-System\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "D:\\0\\LeaveManagement\\LeaveManagement\\WebApi\\obj\\",
+        "outputPath": "E:\\Leave-Management-System\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -98,8 +98,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj": {
-                "projectPath": "D:\\0\\LeaveManagement\\LeaveManagement\\SharedEntities\\Shared.csproj"
+              "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj": {
+                "projectPath": "E:\\Leave-Management-System\\SharedEntities\\Shared.csproj"
               }
             }
           }
@@ -119,6 +119,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.15.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.15, )"
@@ -126,6 +130,10 @@
             "Microsoft.AspNetCore.OData": {
               "target": "Package",
               "version": "[9.3.2, )"
+            },
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.2.13, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
